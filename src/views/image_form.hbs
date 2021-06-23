@@ -1,0 +1,52 @@
+<div class="row p-4">
+  <div class="col-md-5">
+    <div class="card">
+      <div class="card-body">
+        <form action="/images/add" method="post" enctype="multipart/form-data">
+          <div class="form-group">
+            <input
+              type="text"
+              name="title"
+              class="form-control"
+              placeholder="Image title"
+            />
+          </div>
+          <div class="form-group">
+            <textarea
+              name="description"
+              class="form-control"
+              placeholder="Image description"
+            ></textarea>
+          </div>
+          <div class="input-group mb-3">
+            <input type="file" name="image" class="form-control" />
+          </div>
+          <button class="btn btn-primary w-100">Upload</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-7">
+    <table class="table text-center">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Operations</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each images}}
+        <tr>
+          <td>{{title}}</td>
+          <td>{{description}}</td>
+          <td>
+            <a href="{{imageURL}}" class="btn btn-secondary btn-sm" target="_blank">View</a>
+            <a href="/images/delete/{{_id}}" class="btn btn-danger btn-sm">Delete</a>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
